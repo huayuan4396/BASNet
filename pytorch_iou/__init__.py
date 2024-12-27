@@ -10,7 +10,7 @@ def _iou(pred, target, size_average = True):
     for i in range(0,b):
         #compute the IoU of the foreground
         Iand1 = torch.sum(target[i,:,:,:]*pred[i,:,:,:])
-        Ior1 = torch.sum(target[i,:,:,:]) + torch.sum(pred[i,:,:,:])-Iand1
+        Ior1 = torch.sum(target[i,:,:,:]) + torch.sum(pred[i,:,:,:])-Iand1 + 1e-6
         IoU1 = Iand1/Ior1
 
         #IoU loss is (1-IoU1)
